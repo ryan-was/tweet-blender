@@ -15,7 +15,7 @@
 
 //load Oauth from social login
 $thisDir = dirname(__FILE__);
-$OAuth = str_ireplace('tweet-blender/lib/twitteroauth','scrmhub/vendor/hybridauth/hybridauth/Hybrid/thirdparty/OAuth',$thisDir).'/OAuth.php';
+$OAuth = str_ireplace('tweet-blender/lib/twitteroauth','scrm-hub/vendor/hybridauth/hybridauth/Hybrid/thirdparty/OAuth',$thisDir).'/OAuth.php';
 
 class_exists("OAuthSignatureMethod_HMAC_SHA1") && class_exists("OAuthSignatureMethod_RSA_SHA1") || (!class_exists('OAuthException') ? require_once($OAuth) : '');
 /**
@@ -31,7 +31,7 @@ class TwitterOAuth {
   /* Set timeout default. */
   public $timeout = 30;
   /* Set connect timeout. */
-  public $connecttimeout = 30; 
+  public $connecttimeout = 30;
   /* Verify SSL Cert. */
   public $ssl_verifypeer = FALSE;
   /* Respons format. */
@@ -85,7 +85,7 @@ class TwitterOAuth {
     $parameters = array();
     if (!empty($oauth_callback)) {
       $parameters['oauth_callback'] = $oauth_callback;
-    } 
+    }
     $request = $this->oAuthRequest($this->requestTokenURL(), 'GET', $parameters);
     $token = OAuthUtil::parse_parameters($request);
     $this->token = new OAuthConsumer($token['oauth_token'], $token['oauth_token_secret']);
@@ -136,7 +136,7 @@ class TwitterOAuth {
     }
     return $response;
   }
-  
+
   /**
    * POST wreapper for oAuthRequest.
    */
