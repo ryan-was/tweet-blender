@@ -1,0 +1,10 @@
+{
+  "name": "tweet-blender/tweet-blender",
+  "description": "Provides several Twitter widgets: show your own tweets, show tweets relevant to post's tags, show tweets for Twitter lists, show tweets for hashtags, show tweets for keyword searches, show favorite tweets. Multiple widgets on the same page are supported. Can combine sources and blend all of them into a single stream.",
+  "keywords": ["wordpress", "plugin", "tweet-blender"],
+  "type": "wordpress-plugin",
+  "require": {
+    "php": ">=5.3.2",
+    "composer/installers": "1.0.*"
+  }
+}
