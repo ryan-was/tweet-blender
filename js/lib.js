@@ -14,7 +14,7 @@ if (typeof(TB_labels) == 'undefined') {
 		version_msg: "Powered by Tweet Blender plugin v{0} blending {1}",
 		limit_msg: "You reached Twitter API connection limit",
 		no_tweets_msg: "No tweets found for {0}",
-        no_tweets_err: "We can not connect with twitter. Please try again later. Searching for {0}",
+        no_tweets_err: "We can not find any related Tweets. Please try again later. Searching for {0}",
         connection_err: "We are having problems connecting. Please try again later. Searching for {0}",
 		loading_msg: "Loading tweets...",
 		time_past: "{0} {1} ago",
@@ -51,15 +51,15 @@ TB_timePeriodLengths = new Array("60","60","24","7","4.35","12");
 //search: Wed, 27 May 2009 15:52:40 +0000
 //user feed: Thu May 21 00:09:16 +0000 2009
 function TB_str2date(dateString) {
-	
+
 	var dateObj = new Date();
-	
+
 	if (typeof(dateString) == 'undefined') {
-		return dateObj;	
+		return dateObj;
 	}
-	
+
 	var dateData = dateString.split(/[\s\:]/);
-	
+
 	// if it's a search format
 	if (dateString.indexOf(',') >= 0) {
 		// $wday,$mday, $mon, $year, $hour,$min,$sec,$offset
@@ -83,7 +83,7 @@ function TB_verbalTime(dateObj) {
 	difference,
 	verbalTime,
 	template;
-	
+
 	if (now.getTime() > dateObj.getTime()) {
 		difference = Math.round((now.getTime() - dateObj.getTime()) / 1000);
 		template = TB_labels.time_past;
@@ -92,7 +92,7 @@ function TB_verbalTime(dateObj) {
 		difference = Math.round((dateObj.getTime() - now.getTime()) / 1000);
 		template = TB_labels.time_future;
 	}
-		
+
 
  for(j = 0; difference >= TB_timePeriodLengths[j] && j < TB_timePeriodLengths.length; j++) {
      difference = difference / TB_timePeriodLengths[j];
@@ -107,16 +107,16 @@ function TB_verbalTime(dateObj) {
  return template.format(difference,verbalTime);
 }
 
-function TB_addLoadEvent(func) { 
-	var oldonload = window.onload; 
-	if (typeof window.onload != 'function') { 
-	    window.onload = func; 
-	} else { 
-	    window.onload = function() { 
-	      oldonload(); 
-	      func(); 
+function TB_addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+	    window.onload = func;
+	} else {
+	    window.onload = function() {
+	      oldonload();
+	      func();
 	    }
-	} 
+	}
 }
 
 //function to get the size of an object
@@ -132,7 +132,7 @@ function TB_getObjectSize(obj) {
 function TB_getUniqueElements(arr) {
 	 var uniques = [], i, val;
 	 for(i=arr.length;i--;){
-	     val = arr[i];  
+	     val = arr[i];
 	     if(jQuery.inArray( val, uniques )===-1){
 	         uniques.unshift(val);
 	     }
@@ -152,7 +152,7 @@ String.prototype.format = function() {
 
 //Base64 decode
 String.prototype.base64_decode = function() {
- 
+
     var b64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
     	o1, o2, o3, h1, h2, h3, h4, bits, i = 0,
         ac = 0,
@@ -194,7 +194,7 @@ String.prototype.base64_decode = function() {
 }
 
 String.prototype.utf8_decode = function() {
-	
+
     var tmp_arr = [],
         i = 0,
         ac = 0,
